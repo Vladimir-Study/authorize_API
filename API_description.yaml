@@ -1,0 +1,189 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI спецификация для работы с таблицеq аккаунтов
+  contact:
+    name: Pavlov Vladimir
+    email: vpavlov@ecomru.ru
+  version: 1.0.0  
+servers: 
+  - url: http://127.0.0.1:5000/account/
+    descriptions: Локальный тест-сервер
+paths:
+  /status/{id}:
+    get:
+      summary: Получение статуса аккаунта с указанным id
+      tags: 
+      - Account
+      parameters: 
+        - name: id 
+          in: path
+          description: id записи в таблице аккаунтов
+          required: true
+      responses:
+        '200':
+          description: Успершный запрос на получение статусов аккаунта
+          content:
+            applications/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  status_1:
+                    type: string
+                    example: Disactive
+                  status_2:
+                    type: string
+                    example: Active
+        '400':
+          description: Страница не найдена          
+        '405':
+          description: Введен id отсутствующий в базе данных
+          content:
+            applications/json:
+              schema:
+                type: object
+                properties:
+                  id: 
+                    type: string
+                    example: Not found
+  /add:
+    post:
+      summary: Добавления аккаунта в базу данных
+      tags:
+        - Account
+      parameters:
+        - name: id
+          in: query
+          required: true
+        - name: mp_id
+          in: query
+          required: true
+        - name: client_id
+          in: query
+          required: true
+        - name: name
+          in: query
+          required: true
+        - name: client_secret_performance
+          in: query
+        - name: client_id_performance
+          in: query
+        - name: client_id_api
+          in: query
+        - name: api_key
+          in: query
+        - name: campaigns_id
+          in: query
+        - name: yandex_url
+          in: query
+        - name: internal_token
+          in: query
+      responses:
+        '200':
+          description: Аккаунт успешно добавлен
+          content:
+            applications/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Страница отсутсвует
+          
+  /edit:
+    put:
+      summary: Изменение данных аккаунта
+      tags:
+        - Account
+      parameters:
+        - name: id
+          in: query
+          required: true
+        - name: client_id
+          in: query
+          required: true
+        - name: mp_id
+          in: query
+        - name: name
+          in: query
+        - name: client_secret_performance
+          in: query
+        - name: client_id_performance
+          in: query
+        - name: client_id_api
+          in: query
+        - name: api_key
+          in: query
+        - name: campaigns_id
+          in: query
+        - name: yandex_url
+          in: query
+        - name: internal_token
+          in: query
+      responses:
+        '200':
+          description: Аккаунт успешно обнавлен
+          content:
+            applications/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Страница отсутсвует        
+          
+  /delete:
+    delete:
+      summary: Удаление аккаунта из базы данных
+      tags:
+        - Account
+      parameters:
+        - name: id
+          in: query
+          required: true
+      responses:
+        '200':
+          description: Аккаунт успешно удален
+          content:
+            applications/json:
+              schema:
+                type: object
+                properties:
+                  id №id:
+                    type: string
+                    example: DELETE
+        '400':
+          description: Страница отсутсвует          
+          
+components:
+  schemas:
+    Account:
+      type: object
+      required: 
+        - id
+        - client_id
+      properties:
+        id:
+          type: integer
+        mp_id:
+          type: integer
+        client_secret_performance:
+          type: string
+        client_id:
+          type: integer
+        client_id_performance:
+          type: string
+        client_id_api:
+          type: string
+        api_key: 
+          type: string
+        campaigns_id:
+          type: string
+        name:
+          type: string
+        yandex_url:
+          type: string
+        internal_token:
+          type: string
+              
+                    
+            
+    
