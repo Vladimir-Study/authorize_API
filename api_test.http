@@ -1,0 +1,29 @@
+POST http://127.0.0.1:4000/account/add
+Content-Type: application/json
+
+{
+    "mp_id": 1,
+    "client_id": 1,
+    "name": "Ivan"
+}
+
+###
+
+PUT http://127.0.0.1:4000/account/edit
+Content-Type: application/json
+
+{
+    "id": 181,
+    "mp_id": 1,
+    "client_id": 1,
+    "name": "Petr"
+}
+
+###
+
+DELETE http://127.0.0.1:4000/account/delete
+Content-Type: application/json
+
+{
+    "id": 181
+}

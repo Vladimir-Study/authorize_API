@@ -54,9 +54,6 @@ paths:
       tags:
         - Account
       parameters:
-        - name: id
-          in: query
-          required: true
         - name: mp_id
           in: query
           required: true
@@ -66,20 +63,6 @@ paths:
         - name: name
           in: query
           required: true
-        - name: client_secret_performance
-          in: query
-        - name: client_id_performance
-          in: query
-        - name: client_id_api
-          in: query
-        - name: api_key
-          in: query
-        - name: campaigns_id
-          in: query
-        - name: yandex_url
-          in: query
-        - name: internal_token
-          in: query
       responses:
         '200':
           description: Аккаунт успешно добавлен
@@ -99,26 +82,12 @@ paths:
         - name: id
           in: query
           required: true
+        - name: mp_id
+          in: query
         - name: client_id
           in: query
           required: true
-        - name: mp_id
-          in: query
         - name: name
-          in: query
-        - name: client_secret_performance
-          in: query
-        - name: client_id_performance
-          in: query
-        - name: client_id_api
-          in: query
-        - name: api_key
-          in: query
-        - name: campaigns_id
-          in: query
-        - name: yandex_url
-          in: query
-        - name: internal_token
           in: query
       responses:
         '200':
